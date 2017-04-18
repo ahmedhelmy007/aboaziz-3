@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sermons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Chainid</th>
+                <th>Categoryid</th>
+                <th>Fridaysermon</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Sermondate</th>
+                <th>Hijridate</th>
+                <th>Place</th>
+                <th>Elements</th>
+                <th>Imagepath</th>
+                <th>Imagealt</th>
+                <th>Rmpath</th>
+                <th>Rampath</th>
+                <th>Mp3path</th>
+                <th>Videopath</th>
+                <th>Amrpath</th>
+                <th>File3gppath</th>
+                <th>Created</th>
+                <th>Modified</th>
+                <th>Sermonstatus</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sermon in sermons %}
+            <tr>
+                <td><a href="{{ path('sermon_show', { 'id': sermon.id }) }}">{{ sermon.id }}</a></td>
+                <td>{{ sermon.chainId }}</td>
+                <td>{{ sermon.categoryId }}</td>
+                <td>{% if sermon.fridaySermon %}Yes{% else %}No{% endif %}</td>
+                <td>{{ sermon.title }}</td>
+                <td>{{ sermon.description }}</td>
+                <td>{% if sermon.sermonDate %}{{ sermon.sermonDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if sermon.hijriDate %}{{ sermon.hijriDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ sermon.place }}</td>
+                <td>{{ sermon.elements }}</td>
+                <td>{{ sermon.imagePath }}</td>
+                <td>{{ sermon.imageAlt }}</td>
+                <td>{{ sermon.rmPath }}</td>
+                <td>{{ sermon.ramPath }}</td>
+                <td>{{ sermon.mp3Path }}</td>
+                <td>{{ sermon.videoPath }}</td>
+                <td>{{ sermon.amrPath }}</td>
+                <td>{{ sermon.file3gpPath }}</td>
+                <td>{% if sermon.created %}{{ sermon.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if sermon.modified %}{{ sermon.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ sermon.sermonStatus }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('sermon_show', { 'id': sermon.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sermon_edit', { 'id': sermon.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sermon_new') }}">Create a new sermon</a>
+        </li>
+    </ul>
+{% endblock %}

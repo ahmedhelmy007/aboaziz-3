@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sermon</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sermon.id }}</td>
+            </tr>
+            <tr>
+                <th>Chainid</th>
+                <td>{{ sermon.chainId }}</td>
+            </tr>
+            <tr>
+                <th>Categoryid</th>
+                <td>{{ sermon.categoryId }}</td>
+            </tr>
+            <tr>
+                <th>Fridaysermon</th>
+                <td>{% if sermon.fridaySermon %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ sermon.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ sermon.description }}</td>
+            </tr>
+            <tr>
+                <th>Sermondate</th>
+                <td>{% if sermon.sermonDate %}{{ sermon.sermonDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hijridate</th>
+                <td>{% if sermon.hijriDate %}{{ sermon.hijriDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td>{{ sermon.place }}</td>
+            </tr>
+            <tr>
+                <th>Elements</th>
+                <td>{{ sermon.elements }}</td>
+            </tr>
+            <tr>
+                <th>Imagepath</th>
+                <td>{{ sermon.imagePath }}</td>
+            </tr>
+            <tr>
+                <th>Imagealt</th>
+                <td>{{ sermon.imageAlt }}</td>
+            </tr>
+            <tr>
+                <th>Rmpath</th>
+                <td>{{ sermon.rmPath }}</td>
+            </tr>
+            <tr>
+                <th>Rampath</th>
+                <td>{{ sermon.ramPath }}</td>
+            </tr>
+            <tr>
+                <th>Mp3path</th>
+                <td>{{ sermon.mp3Path }}</td>
+            </tr>
+            <tr>
+                <th>Videopath</th>
+                <td>{{ sermon.videoPath }}</td>
+            </tr>
+            <tr>
+                <th>Amrpath</th>
+                <td>{{ sermon.amrPath }}</td>
+            </tr>
+            <tr>
+                <th>File3gppath</th>
+                <td>{{ sermon.file3gpPath }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if sermon.created %}{{ sermon.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modified</th>
+                <td>{% if sermon.modified %}{{ sermon.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Sermonstatus</th>
+                <td>{{ sermon.sermonStatus }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sermon_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('sermon_edit', { 'id': sermon.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
