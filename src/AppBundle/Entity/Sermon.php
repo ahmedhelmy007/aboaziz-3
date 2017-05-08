@@ -24,9 +24,9 @@ class Sermon
     /**
      * @var integer
      *
-     * @ORM\Column(name="chain_id", type="integer", nullable=true)
+     * @ORM\Column(name="series_id", type="integer", nullable=true)
      */
-    private $chainId;
+    private $seriesId;
 
     /**
      * @var integer
@@ -141,6 +141,13 @@ class Sermon
     private $file3gpPath;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="youtube_url", type="string", length=255, nullable=true)
+     */
+    private $youtubeUrl;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime", nullable=true)
@@ -171,30 +178,6 @@ class Sermon
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set chainId
-     *
-     * @param integer $chainId
-     *
-     * @return Sermon
-     */
-    public function setChainId($chainId)
-    {
-        $this->chainId = $chainId;
-
-        return $this;
-    }
-
-    /**
-     * Get chainId
-     *
-     * @return integer
-     */
-    public function getChainId()
-    {
-        return $this->chainId;
     }
 
     /**
@@ -651,5 +634,53 @@ class Sermon
     public function getSermonStatus()
     {
         return $this->sermonStatus;
+    }
+
+    /**
+     * Set seriesId
+     *
+     * @param integer $seriesId
+     *
+     * @return Sermon
+     */
+    public function setSeriesId($seriesId)
+    {
+        $this->seriesId = $seriesId;
+
+        return $this;
+    }
+
+    /**
+     * Get seriesId
+     *
+     * @return integer
+     */
+    public function getSeriesId()
+    {
+        return $this->seriesId;
+    }
+
+    /**
+     * Set youtubeUrl
+     *
+     * @param string $youtubeUrl
+     *
+     * @return Sermon
+     */
+    public function setYoutubeUrl($youtubeUrl)
+    {
+        $this->youtubeUrl = $youtubeUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get youtubeUrl
+     *
+     * @return string
+     */
+    public function getYoutubeUrl()
+    {
+        return $this->youtubeUrl;
     }
 }
