@@ -63,8 +63,11 @@ class SermonController extends Controller
      * @Route("/{id}", name="sermon_show")
      * @Method("GET")
      */
-    public function showAction(Sermon $sermon)
+    public function showAction(Sermon $sermon, Request $request)
     {
+        $testTrans = $this->get('translator')->trans('test');
+        echo 'translated in Cnotroller:'. $testTrans;
+        echo '<br/>in Controller:'.$locale = $request->getLocale();
         $deleteForm = $this->createDeleteForm($sermon);
 
         return $this->render('sermon/show.html.twig', array(
